@@ -24,5 +24,4 @@ dist
 *local.*
 
 # IDE Files
-.idea/workspace.xml
-
+.idea
