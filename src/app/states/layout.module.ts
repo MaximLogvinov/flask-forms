@@ -1,8 +1,13 @@
 // outsource
 import { NgModule } from '@angular/core';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CommonModule } from '@angular/common';
-import { RootModule, UIRouterModule } from "@uirouter/angular";
-// 
+import { RootModule, UIRouterModule } from '@uirouter/angular';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+// components
 import { LayoutComponent } from './layout.component';
 // app states
 import { homeState } from './home/home.state';
@@ -15,8 +20,8 @@ import { loginState } from './login/login.state';
  *
  */
 export const routing: RootModule = {
-    // useHash: false, // html5mode - without # 
-    useHash: true, // with # 
+    // useHash: false, // html5mode - without #
+    useHash: true, // with #
     otherwise: homeState.url,
     states: [
         homeState,
@@ -36,10 +41,16 @@ export const routing: RootModule = {
         homeState.component,
         loginState.component,
     ],
-    // define dependensiec for all page components
+    // define dependencies for all page components
     imports: [
         CommonModule,
-        UIRouterModule.forRoot(routing)
+        FormsModule,
+        HttpClientModule,
+        UIRouterModule.forRoot(routing),
+        NgbModule.forRoot(),
+        ReactiveFormsModule,
+        BrowserAnimationsModule,
+        ToastrModule.forRoot(),
     ],
     // define outgoing modules
     exports: [

@@ -1,6 +1,3 @@
-# IDE Files #
-.idea
-
 # Logs
 logs
 *.log
@@ -25,3 +22,7 @@ dist
 
 # files marked as "local"
 *local.*
+
+# IDE Files
+.idea
+

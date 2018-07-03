@@ -1,6 +1,5 @@
 // outsource
 import { NgModule } from '@angular/core';
-import { Component } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 // app
 import { LayoutModule } from './states/layout.module';
