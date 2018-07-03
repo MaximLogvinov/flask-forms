@@ -6,6 +6,16 @@
       <option name="FORCE_QUOTE_STYlE" value="true" />
       <option name="BLACKLIST_IMPORTS" value="rxjs/Rx,rxjs" />
     </TypeScriptCodeStyleSettings>
+    <codeStyleSettings language="JSON">
+      <indentOptions>
+        <option name="INDENT_SIZE" value="4" />
+      </indentOptions>
+    </codeStyleSettings>
+    <codeStyleSettings language="LESS">
+      <indentOptions>
+        <option name="INDENT_SIZE" value="4" />
+      </indentOptions>
+    </codeStyleSettings>
     <codeStyleSettings language="TypeScript">
       <option name="RIGHT_MARGIN" value="140" />
     </codeStyleSettings>
