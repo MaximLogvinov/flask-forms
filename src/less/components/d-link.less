@@ -1,0 +1,21 @@
+* {
+    /*
+     * local styles for links
+     */
+    .d-link {
+        color: @black;
+        &.white-link {
+            color: white;
+        }
+        &:hover {
+            text-decoration: none;
+            color: @lime_green;
+        }
+
+        &:focus, &:active, &.active { //hide bootstrap default style
+            text-decoration: none;
+            outline: none;
+            color: @lime_green;
+        }
+    }
+}
