@@ -1,0 +1,76 @@
+<nav class="navbar justify-content-between offset-top-3 sticky-top">
+    <a class="navbar-brand" href="#">
+        <img src="http://dfusiontech.com/assets/images/logo_small.png" alt="" height="25px">
+    </a>
+    <!-- For big desktop -->
+    <div class="d-none d-sm-block">
+        <ul class="nav">
+            <li class="nav-item ">
+                <a class="nav-link d-link" href="#">View current CRF</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link d-link" href="#">Log</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link d-link" href="#">Languages</a>
+            </li>
+        </ul>
+    </div>
+    <div ngbDropdown placement="bottom-right" class="d-none d-sm-block">
+        <a
+            role="button"
+            class="d-link"
+            href="javascript:void(0);"
+            ngbDropdownToggle
+                >
+            <i
+                class="fa fa-bars"
+                aria-hidden="true"
+                style="font-size: 24px"
+                    >
+            </i>
+        </a>
+        <div ngbDropdownMenu class="text-center">
+            <a role="button" class="d-link" href="#">Log out</a>
+        </div>
+    </div>
+    <!---->
+    <!-- For small desktop -->
+    <div class="d-block d-sm-none">
+        <a
+            role="button"
+            class="d-link"
+            data-target="#navbarsDefault"
+            href="javascript:void(0);"
+            (click)="isNavbarCollapsed = !isNavbarCollapsed"
+                >
+            <i
+                class="fa fa-bars"
+                aria-hidden="true"
+                style="font-size: 24px"
+                    >
+            </i>
+        </a>
+    </div>
+    <div
+        id="navbarsDefault"
+        class="collapse navbar-collapse"
+        [ngbCollapse]="!isNavbarCollapsed"
+            >
+        <ul class="navbar-nav text-center">
+            <li class="nav-item ">
+                <a class="nav-link d-link" href="#">View current CRF</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link d-link" href="#">Log</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link d-link" href="#">Languages</a>
+            </li>
+            <li class="nav-item">
+                <a role="button" class="d-link" href="#">Log out</a>
+            </li>
+        </ul>
+    </div>
+    <!---->
+</nav>

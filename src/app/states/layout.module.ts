@@ -7,11 +7,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FooterComponent } from './footer/footer.component';
 // components
 import { LayoutComponent } from './layout.component';
+import { HeaderComponent } from './header/header.component';
 // app states
 import { homeState } from './home/home.state';
 import { loginState } from './login/login.state';
+
+
 
 
 /**
@@ -38,6 +42,8 @@ export const routing: RootModule = {
     // define list of all page components
     declarations: [
         LayoutComponent,
+        HeaderComponent,
+        FooterComponent,
         homeState.component,
         loginState.component,
     ],
