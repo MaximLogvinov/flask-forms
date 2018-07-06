@@ -11,12 +11,12 @@ import { FooterComponent } from './footer/footer.component';
 // components
 import { LayoutComponent } from './layout.component';
 import { HeaderComponent } from './header/header.component';
+
 // app states
-import { homeState } from './home/home.state';
+import { logState } from './log/log.state';
 import { loginState } from './login/login.state';
-
-
-
+import { UnauthorizedLayoutComponent } from './unauthorized/unauthorized.page.ts';
+import {unauthorizedState} from './unauthorized/unauthorized.state.ts';
 
 /**
  * define all pages within application
@@ -26,10 +26,10 @@ import { loginState } from './login/login.state';
 export const routing: RootModule = {
     // useHash: false, // html5mode - without #
     useHash: true, // with #
-    otherwise: homeState.url,
+    otherwise: logState.url,
     states: [
-        homeState,
-        loginState,
+        logState,
+        loginState
     ],
 };
 
@@ -42,10 +42,12 @@ export const routing: RootModule = {
     // define list of all page components
     declarations: [
         LayoutComponent,
+       // unauthorizedState.component,
         HeaderComponent,
         FooterComponent,
-        homeState.component,
+        logState.component,
         loginState.component,
+
     ],
     // define dependencies for all page components
     imports: [

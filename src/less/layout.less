@@ -5,10 +5,9 @@ html {
     position: relative;
 
     // temporary varaibles
-    @header-height: 100px;
+    @header-height: 59px;
     @footer-height: 100px;
 
-    //
     #layout {
         margin: 0;
         padding: 0;
@@ -23,8 +22,38 @@ html {
             width: 100%;
             display: inline-block;
             // test props to separate page root components
-            background: green;
+            background: @white;
             min-height: ~'calc(100vh - '@header-height + @footer-height~')';
+
+            // to overwrite default bootstrap strip color
+            .lime-green-strip {
+                &.table-striped > tbody > tr:nth-of-type(odd){
+                    background-color: @lime-green;
+                }
+            }
+
+            // set table background color
+            .grey-table {
+                background-color: @grey;
+            }
+
+            // overwrite default pagination style
+            .page-link {
+                color: @lime-green;
+                &:focus {
+                    box-shadow: none;
+                }
+            }
+            .page-item, .page-link {
+                &:hover, &:focus, &:active, &.active {
+                    background-color: @black;
+                    border-color: @black;
+                }
+            }
+            .page-item.active .page-link {
+                background-color: @black;
+                border-color: @black;
+            }
         }
 
         #footer {

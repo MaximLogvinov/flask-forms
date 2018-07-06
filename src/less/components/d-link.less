@@ -1,21 +1,26 @@
 * {
     /*
      * local styles for links
+     *
+     * Example:
+     * <a href="variable" class="d-link"></a>
+     * <a href="variable" class="d-link table-link"></a>
      */
     .d-link {
         color: @black;
         &.white-link {
             color: white;
         }
-        &:hover {
+        &:hover, &:focus, &:active, &.active {
             text-decoration: none;
-            color: @lime_green;
+            color: @lime-green;
         }
-
-        &:focus, &:active, &.active { //hide bootstrap default style
-            text-decoration: none;
-            outline: none;
-            color: @lime_green;
+        // other hover effect on link in table because of the same bg-color with color of link on hover
+        &.table-link {
+            &:hover, &:focus, &:active, &.active {
+                text-decoration: none;
+                color: @white;
+            }
         }
     }
 }

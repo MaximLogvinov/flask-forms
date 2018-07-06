@@ -1,11 +1,15 @@
 #header {
-    //overflow: hidden;
-    // test props to separate page root components
-    background: white;
+    background: @white;
     min-height: 50px;
+
+    border-bottom: 2px solid @black;
 
     // to remove standard icon
     .dropdown-toggle::after {
         content: none;
+    }
+
+    .item-black-divider li {
+        border-bottom: 1px solid @black;
     }
 }

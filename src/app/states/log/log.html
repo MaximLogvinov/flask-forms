@@ -1,0 +1,88 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="h2 card-title text-center">Log</h3>
+                    <table class="table lime-green-strip table-striped">
+                        <thead>
+                        <tr>
+                            <th>Event</th>
+                            <th>ID</th>
+                            <th>Status</th>
+                            <th>Link</th>
+                        </tr>
+                        </thead>
+                        <tbody *ngIf="listCRF" class="grey-table">
+                        <tr *ngFor="let crf of listCRF.items">
+                            <td>{{ crf.name.ENGLISH }}</td>
+                            <td>{{ crf.id }}</td>
+                            <td>{{ crf.status }}</td>
+                            <td>
+                                <a class="d-link table-link" href="javascript:void(0);">
+                                    <i class="fa fa-external-link"></i>
+                                    Open
+                                </a>
+                            </td>
+                            <td><p>{{listCRF.rest.pagination.page}}</p></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="card-footer bg-secondary">
+                    <div class="d-flex justify-content-between" *ngIf="listCRF">
+                        <ngb-pagination
+                            (pageChange)="changePaginationOptions($event)"
+                            [maxSize]="3"
+                            [collectionSize]="listCRF.rest.pagination.total"
+                            [(page)]="page"
+                            aria-label="Default pagination"
+                                >
+                        </ngb-pagination>
+                        <div ngbDropdown placement="bottom-right">
+                            <a
+                                role="button"
+                                class="d-link"
+                                href="javascript:void(0);"
+                                ngbDropdownToggle
+                                    >
+                                <i class="fa fa-file-text"></i> Size
+                            </a>
+                            <div ngbDropdownMenu class="text-center">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">
+                                        <a
+                                            role="button"
+                                            class="d-link"
+                                            href="javascript:void(0);"
+                                                >
+                                            <i class="fa fa-file-text"></i> Size 5
+                                        </a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <a
+                                            role="button"
+                                            class="d-link"
+                                            href="javascript:void(0);"
+                                                >
+                                            <i class="fa fa-file-text"></i> Size 10
+                                        </a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <a
+                                            role="button"
+                                            class="d-link"
+                                            href="javascript:void(0);"
+                                                >
+                                            <i class="fa fa-file-text"></i> Size 20
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
