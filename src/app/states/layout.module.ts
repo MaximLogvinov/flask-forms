@@ -15,8 +15,6 @@ import { HeaderComponent } from './header/header.component';
 // app states
 import { logState } from './log/log.state';
 import { loginState } from './login/login.state';
-import { UnauthorizedLayoutComponent } from './unauthorized/unauthorized.page.ts';
-import {unauthorizedState} from './unauthorized/unauthorized.state.ts';
 
 /**
  * define all pages within application
@@ -42,7 +40,6 @@ export const routing: RootModule = {
     // define list of all page components
     declarations: [
         LayoutComponent,
-       // unauthorizedState.component,
         HeaderComponent,
         FooterComponent,
         logState.component,
