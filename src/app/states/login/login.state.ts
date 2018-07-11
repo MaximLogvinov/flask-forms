@@ -1,8 +1,6 @@
-// outsource
-// import { NgModule } from '@angular/core';
-// import { UIRouterModule } from '@uirouter/angular';
-// app
 import { LoginPage } from './login.page';
+import { HeaderComponent } from '../header/header.component';
+import { FooterComponent } from '../footer/footer.component';
 
 /**
  * Metada of home state
@@ -12,7 +10,11 @@ import { LoginPage } from './login.page';
 export const loginState = {
     name: 'login',
     url: '/login',
-    component: LoginPage,
+    views: {
+        header: { component: HeaderComponent },
+        $default: { component: LoginPage },
+        footer: { component: FooterComponent }
+        },
     resolve: [
         {
             token: 'people',

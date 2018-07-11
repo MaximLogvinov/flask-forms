@@ -1,12 +1,5 @@
-<!-- Common header can be component => selector: '[id="header"]', -->
-<header id="header">
-    <!--<h1> Header </h1>-->
-    <!--<br/>-->
-    <!--<a uiSref="home" uiSrefActive="active"> home </a>-->
-    <!--<a uiSref="login" uiSrefActive="active"> login </a>-->
-    <!--<br/>-->
-</header>
-
+<!-- place for header, setting header component from state with ui-router only where it declared -->
+<ui-view name="header"></ui-view>
 <!-- place to render page content based on url -->
 <ui-view id="main">
     <div class="def-preloader">
@@ -16,12 +9,5 @@
         </div>
     </div>
 </ui-view>
-
-<!-- Common footer can be component => selector: '[id="footer"]', -->
-<footer id="footer">
-    <!--<h1> Footer </h1>-->
-    <!--<br/>-->
-    <!--<a uiSref="home" uiSrefActive="active"> home </a>-->
-    <!--<a uiSref="login" uiSrefActive="active"> login </a>-->
-    <!--<br/>-->
-</footer>
+<!-- place for footer, setting footer component from state with ui-router only where it declared -->
+<ui-view name="footer"></ui-view>

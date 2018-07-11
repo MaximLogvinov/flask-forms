@@ -1,8 +1,6 @@
-// outsource
-// import { NgModule } from '@angular/core';
-// import { UIRouterModule } from '@uirouter/angular';
-// app
 import { LogPage } from './log.page';
+import { HeaderComponent } from '../header/header.component';
+import { FooterComponent } from '../footer/footer.component';
 
 /**
  * Metada of home state
@@ -12,5 +10,9 @@ import { LogPage } from './log.page';
 export const logState = {
     name: 'log',
     url: '/log',
-    component: LogPage,
+    views: {
+        header: { component: HeaderComponent },
+        $default: { component: LogPage },
+        footer: { component: FooterComponent }
+    },
 };

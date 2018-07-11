@@ -7,14 +7,25 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FooterComponent } from './footer/footer.component';
+
 // components
+import { FooterComponent } from './footer/footer.component';
 import { LayoutComponent } from './layout.component';
 import { HeaderComponent } from './header/header.component';
 
 // app states
+
+// log state
 import { logState } from './log/log.state';
+import { LogPage } from './log/log.page';
+
+// login state
 import { loginState } from './login/login.state';
+import { LoginPage } from './login/login.page';
+
+// error state
+import { ErrorPage } from './error/error.page.ts';
+import { errorState } from './error/error.state.ts';
 
 /**
  * define all pages within application
@@ -24,10 +35,11 @@ import { loginState } from './login/login.state';
 export const routing: RootModule = {
     // useHash: false, // html5mode - without #
     useHash: true, // with #
-    otherwise: logState.url,
+    otherwise: errorState.url,
     states: [
         logState,
-        loginState
+        loginState,
+        errorState
     ],
 };
 
@@ -42,9 +54,9 @@ export const routing: RootModule = {
         LayoutComponent,
         HeaderComponent,
         FooterComponent,
-        logState.component,
-        loginState.component,
-
+        LogPage,
+        LoginPage,
+        ErrorPage
     ],
     // define dependencies for all page components
     imports: [
