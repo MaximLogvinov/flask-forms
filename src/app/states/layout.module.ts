@@ -28,6 +28,10 @@ import { LoginPage } from './login/login.page';
 import { ErrorPage } from './error/error.page.ts';
 import { errorState } from './error/error.state.ts';
 
+// viewer state
+import { ViewerPage } from './viewer/viewer.page';
+import { viewerState } from './viewer/viewer.state';
+
 import { rootLayoutState } from './root-layout.state';
 
 /**
@@ -55,6 +59,7 @@ export const routing: RootModule = {
         logState,
         loginState,
         errorState,
+        viewerState,
         rootLayoutState,
         layoutState
 
@@ -75,7 +80,8 @@ export const routing: RootModule = {
         RootLayoutComponent,
         LogPage,
         LoginPage,
-        ErrorPage
+        ErrorPage,
+        ViewerPage
     ],
     // define dependencies for all page components
     imports: [

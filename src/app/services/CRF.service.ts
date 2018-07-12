@@ -23,7 +23,7 @@ export class CRFService {
                 'http://192.168.0.19:5604/flask/viewer/XLJV7EmzwmZM/log',
                 credentials )
             .map( data => {
-                console.log(data);
+                // console.log(data);
                 return data;
             });
     }
