@@ -8,6 +8,7 @@ import { FooterComponent } from '../footer/footer.component';
  *
  */
 export const logState = {
+    parent: 'layout',
     name: 'log',
     url: '/log',
     views: {

@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 // app
 import { LayoutModule } from './states/layout.module';
-import { LayoutComponent } from './states/layout.component';
+import { RootLayoutComponent } from './states/root-layout.component';
 import { CRFService } from './services/CRF.service';
 
 import {RootModule, UIRouterModule, UIView} from '@uirouter/angular';
@@ -14,7 +14,7 @@ import {RootModule, UIRouterModule, UIView} from '@uirouter/angular';
  *
  */
 @NgModule({
-    bootstrap: [ LayoutComponent ], // UIView
+    bootstrap: [ RootLayoutComponent ], // UIView
     declarations: [],
     imports: [
         LayoutModule,

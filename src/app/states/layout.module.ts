@@ -12,6 +12,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FooterComponent } from './footer/footer.component';
 import { LayoutComponent } from './layout.component';
 import { HeaderComponent } from './header/header.component';
+import { RootLayoutComponent } from './root-layout.component';
 
 // app states
 
@@ -27,6 +28,20 @@ import { LoginPage } from './login/login.page';
 import { ErrorPage } from './error/error.page.ts';
 import { errorState } from './error/error.state.ts';
 
+import { rootLayoutState } from './root-layout.state';
+
+/**
+ * Metadata of layout state
+ *
+ *
+ */
+
+export const layoutState = {
+    parent: 'root-layout',
+    name: 'layout',
+    component: LayoutComponent
+};
+
 /**
  * define all pages within application
  *
@@ -39,7 +54,10 @@ export const routing: RootModule = {
     states: [
         logState,
         loginState,
-        errorState
+        errorState,
+        rootLayoutState,
+        layoutState
+
     ],
 };
 
@@ -54,6 +72,7 @@ export const routing: RootModule = {
         LayoutComponent,
         HeaderComponent,
         FooterComponent,
+        RootLayoutComponent,
         LogPage,
         LoginPage,
         ErrorPage
