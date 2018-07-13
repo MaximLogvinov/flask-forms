@@ -41,7 +41,7 @@ import { rootLayoutState } from './root-layout.state';
  */
 
 export const layoutState = {
-    parent: 'root-layout',
+    // parent: 'root-layout',
     name: 'layout',
     component: LayoutComponent
 };

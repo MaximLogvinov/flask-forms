@@ -14,7 +14,7 @@
                         </tr>
                         </thead>
                         <tbody *ngIf="listCRF" class="grey-table">
-                        <tr *ngFor="let crf of listCRF.items">
+                        <tr *ngFor="let crf of listCRF">
                             <td>{{ crf.name.ENGLISH }}</td>
                             <td>{{ crf.id }}</td>
                             <td>{{ crf.status }}</td>
@@ -24,7 +24,6 @@
                                     Open
                                 </a>
                             </td>
-                            <td><p>{{listCRF.rest.pagination.page}}</p></td>
                         </tr>
                         </tbody>
                     </table>
@@ -34,8 +33,8 @@
                         <ngb-pagination
                             (pageChange)="changePaginationOptions($event)"
                             [maxSize]="3"
-                            [collectionSize]="listCRF.rest.pagination.total"
-                            [(page)]="page"
+                            [collectionSize]="pagination.total"
+                            [(page)]="pagination.page"
                             aria-label="Default pagination"
                                 >
                         </ngb-pagination>

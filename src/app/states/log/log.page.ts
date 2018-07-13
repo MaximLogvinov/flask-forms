@@ -16,15 +16,18 @@ import { CRFService } from '../../services/CRF.service';
 export class LogPage implements OnInit {
     public page;
     public listCRF;
+    public pagination;
     constructor ( private state: StateService, public crf: CRFService ) {}
     changePaginationOptions() {
-        this.crf.log( this.page ).subscribe(response => {
-            this.listCRF = response;
+        // problems with page parameter, fix next time
+        this.crf.log( 1 ).subscribe(response => {
+            this.listCRF = response[1];
         });
     }
     ngOnInit() {
         this.crf.log( 1 ).subscribe( response => {
-            this.listCRF = response;
+            this.pagination = response[0];
+            this.listCRF = response[1];
             console.log( response );
         });
     }

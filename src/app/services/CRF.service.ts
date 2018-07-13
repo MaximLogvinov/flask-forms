@@ -1,6 +1,11 @@
 // outsource
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs/Observable';
+
+// model
+import { CRFItem } from '../../../crf-items.model';
 
 @Injectable()
 export class CRFService {
@@ -18,13 +23,21 @@ export class CRFService {
             'size': 10,
             'sort': 'name,asc'
         };
+        const CRFlist = [];
+        let pagination = {};
         return this.http
             .post(
                 'http://192.168.0.19:5604/flask/viewer/XLJV7EmzwmZM/log',
                 credentials )
             .map( data => {
-                // console.log(data);
-                return data;
+                for ( let i = 0; data['items'].length > i; i++ ) {
+                    CRFlist.push(new CRFItem(data['items'][i]));
+                }
+                pagination = data['rest']['pagination'];
+                console.log(data);
+                // console.log(pagination);
+                // console.log(CRFlist);
+                return [ pagination, CRFlist ];
             });
     }
 }
