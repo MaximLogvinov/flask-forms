@@ -1,0 +1,31 @@
+#error {
+    background-color: #555555;
+    @error-page-height: 100vh;
+
+    /**
+     * set fixed height for parent container .content-wrap, use display: inline-block and additional
+     * class .helper for solve the problem of content vertical align
+     * takes from: https://habrahabr.ru/post/73113/
+     */
+    .error-page-content {
+        height: @error-page-height;
+
+        .width-limiter {
+            max-width: 97%; // to fix query behaviour
+            display: inline-block;
+            vertical-align: middle;
+            .content-wrap {
+                background-color: @lime-green;
+                padding: 20px;
+                border-radius: 10px;
+                max-width: 600px;
+            }
+        }
+        .helper {
+            display: inline-block;
+            vertical-align: middle;
+            height: 100%;
+            width: 0;
+        }
+    }
+}

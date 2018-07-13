@@ -1,4 +1,4 @@
-<nav class="navbar justify-content-between offset-top-3 sticky-top">
+<nav class="navbar justify-content-between">
     <a class="navbar-brand" href="#">
         <img src="http://dfusiontech.com/assets/images/logo_small.png" alt="" height="25px">
     </a>
@@ -6,13 +6,13 @@
     <div class="d-none d-sm-block">
         <ul class="nav">
             <li class="nav-item ">
-                <a class="nav-link d-link" href="#">View current CRF</a>
+                <a class="nav-link d-link" href="javascript:void(0);">View current CRF</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link d-link" href="#">Log</a>
+                <a class="nav-link d-link" href="javascript:void(0);">Log</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link d-link" href="#">Languages</a>
+                <a class="nav-link d-link" href="javascript:void(0);">Languages</a>
             </li>
         </ul>
     </div>
@@ -23,12 +23,7 @@
             href="javascript:void(0);"
             ngbDropdownToggle
                 >
-            <i
-                class="fa fa-bars"
-                aria-hidden="true"
-                style="font-size: 24px"
-                    >
-            </i>
+            Menu
         </a>
         <div ngbDropdownMenu class="text-center">
             <a role="button" class="d-link" href="#">Log out</a>
@@ -57,7 +52,7 @@
         class="collapse navbar-collapse"
         [ngbCollapse]="!isNavbarCollapsed"
             >
-        <ul class="navbar-nav text-center">
+        <ul class="navbar-nav text-center item-black-divider">
             <li class="nav-item ">
                 <a class="nav-link d-link" href="#">View current CRF</a>
             </li>
@@ -68,7 +63,7 @@
                 <a class="nav-link d-link" href="#">Languages</a>
             </li>
             <li class="nav-item">
-                <a role="button" class="d-link" href="#">Log out</a>
+                <a class="nav-link d-link" href="#">Log out</a>
             </li>
         </ul>
     </div>

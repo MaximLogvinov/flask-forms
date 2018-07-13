@@ -7,16 +7,44 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FooterComponent } from './footer/footer.component';
+
 // components
+import { FooterComponent } from './footer/footer.component';
 import { LayoutComponent } from './layout.component';
 import { HeaderComponent } from './header/header.component';
+import { RootLayoutComponent } from './root-layout.component';
+
 // app states
-import { homeState } from './home/home.state';
+
+// log state
+import { logState } from './log/log.state';
+import { LogPage } from './log/log.page';
+
+// login state
 import { loginState } from './login/login.state';
+import { LoginPage } from './login/login.page';
 
+// error state
+import { ErrorPage } from './error/error.page.ts';
+import { errorState } from './error/error.state.ts';
 
+// viewer state
+import { ViewerPage } from './viewer/viewer.page';
+import { viewerState } from './viewer/viewer.state';
 
+import { rootLayoutState } from './root-layout.state';
+
+/**
+ * Metadata of layout state
+ *
+ *
+ */
+
+export const layoutState = {
+    parent: 'root-layout',
+    name: 'layout',
+    component: LayoutComponent
+};
 
 /**
  * define all pages within application
@@ -26,10 +54,15 @@ import { loginState } from './login/login.state';
 export const routing: RootModule = {
     // useHash: false, // html5mode - without #
     useHash: true, // with #
-    otherwise: homeState.url,
+    otherwise: errorState.url,
     states: [
-        homeState,
+        logState,
         loginState,
+        errorState,
+        viewerState,
+        rootLayoutState,
+        layoutState
+
     ],
 };
 
@@ -44,8 +77,11 @@ export const routing: RootModule = {
         LayoutComponent,
         HeaderComponent,
         FooterComponent,
-        homeState.component,
-        loginState.component,
+        RootLayoutComponent,
+        LogPage,
+        LoginPage,
+        ErrorPage,
+        ViewerPage
     ],
     // define dependencies for all page components
     imports: [
