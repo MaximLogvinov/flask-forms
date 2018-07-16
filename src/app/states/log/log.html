@@ -7,9 +7,23 @@
                     <table class="table lime-green-strip table-striped">
                         <thead>
                         <tr>
-                            <th>Event</th>
+                            <th>
+                                Event
+                                <span
+                                    class="fa fa-sort d-link"
+                                    (click)="changePaginationSortEvent( sort )"
+                                        >
+                                </span>
+                            </th>
                             <th>ID</th>
-                            <th>Status</th>
+                            <th>
+                                Status
+                                <span
+                                    class="fa fa-sort d-link"
+                                    (click)="changePaginationSortStatus( sort )"
+                                        >
+                                </span>
+                            </th>
                             <th>Link</th>
                         </tr>
                         </thead>
@@ -31,10 +45,11 @@
                 <div class="card-footer bg-secondary">
                     <div class="d-flex justify-content-between" *ngIf="listCRF">
                         <ngb-pagination
-                            (pageChange)="changePaginationOptions($event)"
-                            [maxSize]="3"
+                            (pageChange)="changePaginationPage($event)"
+                            [maxSize]="maxPagesCount"
                             [collectionSize]="pagination.total"
-                            [(page)]="pagination.page"
+                            [pageSize]="pagination.size"
+                            [(page)]="page"
                             aria-label="Default pagination"
                                 >
                         </ngb-pagination>
@@ -54,6 +69,17 @@
                                             role="button"
                                             class="d-link"
                                             href="javascript:void(0);"
+                                            (click)="changePaginationSize(size[0])"
+                                                >
+                                            <i class="fa fa-file-text"></i> Size 2
+                                        </a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <a
+                                            role="button"
+                                            class="d-link"
+                                            href="javascript:void(0);"
+                                            (click)="changePaginationSize(size[1])"
                                                 >
                                             <i class="fa fa-file-text"></i> Size 5
                                         </a>
@@ -63,17 +89,9 @@
                                             role="button"
                                             class="d-link"
                                             href="javascript:void(0);"
+                                            (click)="changePaginationSize(size[2])"
                                                 >
                                             <i class="fa fa-file-text"></i> Size 10
-                                        </a>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <a
-                                            role="button"
-                                            class="d-link"
-                                            href="javascript:void(0);"
-                                                >
-                                            <i class="fa fa-file-text"></i> Size 20
                                         </a>
                                     </li>
                                 </ul>

@@ -1,8 +1,6 @@
 // outsource
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { map } from 'rxjs/operators';
-import { Observable } from 'rxjs/Observable';
+import { HttpClient } from '@angular/common/http';
 
 // model
 import { CRFItem } from '../../../crf-items.model';
@@ -14,14 +12,13 @@ export class CRFService {
     /**
      * log data from server
      *
-     * @returns {Observable<any | undefined>}
      * @public
      */
-    public log ( pageNumber ) {
+    public log ( pageNumber, sizeValue, sortValue ) {
         const credentials = {
             'page': pageNumber - 1,
-            'size': 10,
-            'sort': 'name,asc'
+            'size': sizeValue,
+            'sort': sortValue // 'name,asc'
         };
         const CRFlist = [];
         let pagination = {};
@@ -35,8 +32,6 @@ export class CRFService {
                 }
                 pagination = data['rest']['pagination'];
                 console.log(data);
-                // console.log(pagination);
-                // console.log(CRFlist);
                 return [ pagination, CRFlist ];
             });
     }
