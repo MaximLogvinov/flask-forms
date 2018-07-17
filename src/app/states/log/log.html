@@ -9,11 +9,14 @@
                         <tr>
                             <th>
                                 Event
-                                <span
+                                <a
+                                    uiSref="log"
+                                    role="button"
+                                    [uiParams]="{ sortEvent: this.sort }"
                                     class="fa fa-sort d-link"
                                     (click)="changePaginationSortEvent( sort )"
                                         >
-                                </span>
+                                </a>
                             </th>
                             <th>ID</th>
                             <th>

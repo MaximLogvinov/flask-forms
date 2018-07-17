@@ -10,10 +10,16 @@ import { FooterComponent } from '../footer/footer.component';
 export const logState = {
     parent: 'layout',
     name: 'log',
-    url: '/log',
+    url: '/log?{sortEvent=string}&{sortStatus=str}&{page=integer}&{size=int}',
     views: {
         header: { component: HeaderComponent },
         $default: { component: LogPage },
         footer: { component: FooterComponent }
+    },
+    params: {
+        page: '1',
+        size: '5',
+        sortStatus: 's',
+        sortEvent: 'e',
     },
 };

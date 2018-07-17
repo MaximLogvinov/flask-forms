@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 // model
-import { CRFItem } from '../../../crf-items.model';
+import { CRFItem } from '../models/crf-items.model';
 
 @Injectable()
 export class CRFService {
