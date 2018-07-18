@@ -1,6 +1,8 @@
 import { LogPage } from './log.page';
 import { HeaderComponent } from '../header/header.component';
 import { FooterComponent } from '../footer/footer.component';
+import { CRFService } from '../../services/CRF.service';
+import { Transition } from '@uirouter/angular';
 
 /**
  * Metada of home state
@@ -10,7 +12,7 @@ import { FooterComponent } from '../footer/footer.component';
 export const logState = {
     parent: 'layout',
     name: 'log',
-    url: '/log?{sortEvent=string}&{sortStatus=str}&{page=integer}&{size=int}',
+    url: '/log?sortStatus&sortEvent&page&size',
     views: {
         header: { component: HeaderComponent },
         $default: { component: LogPage },
@@ -19,7 +21,21 @@ export const logState = {
     params: {
         page: '1',
         size: '5',
-        sortStatus: 's',
-        sortEvent: 'e',
+        sortStatus: 'status,asc',
+        sortEvent: 'name,asc'
     },
+    resolve: [
+        {
+            token: 'crf',
+            deps: [ CRFService, Transition ],
+            resolveFn: ( crf, trans ) => {
+                crf.page = trans.params().page;
+                crf.size = trans.params().size;
+                crf.sortStatus = trans.params().sortStatus;
+                crf.sortEvent = trans.params().sortEvent;
+                console.log(crf.page, crf.size, crf.sort);
+                console.log( trans.params() );
+            }
+        }
+    ]
 };

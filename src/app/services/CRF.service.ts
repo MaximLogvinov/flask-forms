@@ -8,17 +8,26 @@ import { CRFItem } from '../models/crf-items.model';
 @Injectable()
 export class CRFService {
     constructor( private http: HttpClient ) {}
-
+    public page;
+    public size;
+    public sortStatus;
+    public sortEvent;
     /**
      * log data from server
      *
      * @public
      */
-    public log ( pageNumber, sizeValue, sortValue ) {
+    // need to fix behaviour of this function and input crf variables in request!
+    public log ( pageNumber ) {
+        // set size value ( first initialization starts at log state, with default url values )
+        // and transfer it to number from string
+        const pageSize = +this.size;
+        console.log(this.sortStatus);
         const credentials = {
             'page': pageNumber - 1,
-            'size': sizeValue,
-            'sort': sortValue // 'name,asc'
+            'size': pageSize,
+            'sortStatus': this.sortStatus, // 'status,asc'
+            'sortEvent': 'name,asc'
         };
         const CRFlist = [];
         let pagination = {};
