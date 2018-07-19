@@ -12,7 +12,7 @@ import { Transition } from '@uirouter/angular';
 export const logState = {
     parent: 'layout',
     name: 'log',
-    url: '/log?sortStatus&sortEvent&page&size',
+    url: '/log?sortField&sortDirection&page&size',
     views: {
         header: { component: HeaderComponent },
         $default: { component: LogPage },
@@ -21,20 +21,20 @@ export const logState = {
     params: {
         page: '1',
         size: '5',
-        sortStatus: 'status,asc',
-        sortEvent: 'name,asc'
+        sortField: 'status',
+        sortDirection: 'asc'
+        // sortEvent: 'name,asc'
     },
     resolve: [
         {
-            token: 'crf',
+            token: 'crflist',
             deps: [ CRFService, Transition ],
             resolveFn: ( crf, trans ) => {
+                // setting initial page values
                 crf.page = trans.params().page;
                 crf.size = trans.params().size;
-                crf.sortStatus = trans.params().sortStatus;
-                crf.sortEvent = trans.params().sortEvent;
-                console.log(crf.page, crf.size, crf.sort);
-                console.log( trans.params() );
+                crf.sortField = trans.params().sortField;
+                crf.sortDirection = trans.params().sortDirection;
             }
         }
     ]

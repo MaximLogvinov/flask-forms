@@ -8,26 +8,30 @@ import { CRFItem } from '../models/crf-items.model';
 @Injectable()
 export class CRFService {
     constructor( private http: HttpClient ) {}
+    // request parameters
     public page;
     public size;
-    public sortStatus;
-    public sortEvent;
+    // sorting params in request
+    // need to divide field and direction because we use different sorting requests
+    // and because of comma transfiguration in url
+    public sortField;
+    public sortDirection;
     /**
      * log data from server
      *
      * @public
      */
-    // need to fix behaviour of this function and input crf variables in request!
-    public log ( pageNumber ) {
-        // set size value ( first initialization starts at log state, with default url values )
-        // and transfer it to number from string
+    public log () {
+        // set parameters ( first initialization starts at log state, with default url values )
+        // and transfer it to number
+        const pageNumber = +this.page;
         const pageSize = +this.size;
-        console.log(this.sortStatus);
+        // console.log(this.sortStatus);
         const credentials = {
-            'page': pageNumber - 1,
+            // subtracting one because page numbering on server side starts from zero
+            'page': pageNumber ? pageNumber - 1 : 0,
             'size': pageSize,
-            'sortStatus': this.sortStatus, // 'status,asc'
-            'sortEvent': 'name,asc'
+            'sort': this.sortField + ',' + this.sortDirection, // 'status,asc'
         };
         const CRFlist = [];
         let pagination = {};
@@ -40,7 +44,6 @@ export class CRFService {
                     CRFlist.push(new CRFItem(data['items'][i]));
                 }
                 pagination = data['rest']['pagination'];
-                console.log(data);
                 return [ pagination, CRFlist ];
             });
     }

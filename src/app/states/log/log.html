@@ -10,11 +10,10 @@
                             <th>
                                 Event
                                 <a
-                                    uiSref=""
                                     role="button"
-                                    [uiParams]="{ sortEvent: this.sort }"
                                     class="fa fa-sort d-link"
-                                    (click)="changePaginationSortEvent( sort )"
+                                    href="javascript:void(0);"
+                                    (click)="changePaginationSortEvent()"
                                         >
                                 </a>
                             </th>
@@ -22,10 +21,10 @@
                             <th>
                                 Status
                                 <a
-                                    uiSref="log"
+                                    role="button"
                                     class="fa fa-sort d-link"
-                                    [uiParams]="{ sortStatus: crf.sortStatus }"
-                                    (click)="changePaginationSortStatus( sort )"
+                                    href="javascript:void(0);"
+                                    (click)="changePaginationSortStatus()"
                                         >
                                 </a>
                             </th>
@@ -38,7 +37,11 @@
                             <td>{{ crf.id }}</td>
                             <td>{{ crf.status }}</td>
                             <td>
-                                <a class="d-link table-link" href="javascript:void(0);">
+                                <a
+                                    role="button"
+                                    class="d-link table-link"
+                                    href="javascript:void(0);"
+                                        >
                                     <i class="fa fa-external-link"></i>
                                     Open
                                 </a>
@@ -49,13 +52,12 @@
                 </div>
                 <div class="card-footer bg-secondary">
                     <div class="d-flex justify-content-between" *ngIf="listCRF">
-                        <button type="button" (click)="debug()"> debug</button>
                         <ngb-pagination
                             (pageChange)="changePaginationPage($event)"
                             [maxSize]="maxPagesCount"
                             [collectionSize]="pagination.total"
                             [pageSize]="pagination.size"
-                            [(page)]="page"
+                            [(page)]="crf.page"
                             aria-label="Default pagination"
                                 >
                         </ngb-pagination>
@@ -63,8 +65,8 @@
                             <a
                                 role="button"
                                 class="d-link"
-                                href="javascript:void(0);"
                                 ngbDropdownToggle
+                                href="javascript:void(0);"
                                     >
                                 <i class="fa fa-file-text"></i> Size
                             </a>
@@ -74,8 +76,7 @@
                                         <a
                                             role="button"
                                             class="d-link"
-                                            uiSref="log"
-                                            [uiParams]="{ size: crf.size }"
+                                            href="javascript:void(0);"
                                             (click)="changePaginationSize(size[0])"
                                                 >
                                             <i class="fa fa-file-text"></i> Size 2
@@ -85,8 +86,7 @@
                                         <a
                                             role="button"
                                             class="d-link"
-                                            uiSref="log"
-                                            [uiParams]="{ size: crf.size }"
+                                            href="javascript:void(0);"
                                             (click)="changePaginationSize(size[1])"
                                                 >
                                             <i class="fa fa-file-text"></i> Size 5
@@ -96,8 +96,7 @@
                                         <a
                                             role="button"
                                             class="d-link"
-                                            uiSref="log"
-                                            [uiParams]="{ size: crf.size }"
+                                            href="javascript:void(0)"
                                             (click)="changePaginationSize(size[2])"
                                                 >
                                             <i class="fa fa-file-text"></i> Size 10
