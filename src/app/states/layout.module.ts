@@ -41,7 +41,7 @@ import { rootLayoutState } from './root-layout.state';
  */
 
 export const layoutState = {
-    parent: 'root-layout',
+    // parent: 'root-layout',
     name: 'layout',
     component: LayoutComponent
 };
@@ -55,6 +55,7 @@ export const routing: RootModule = {
     // useHash: false, // html5mode - without #
     useHash: true, // with #
     otherwise: errorState.url,
+    initial: logState.url,
     states: [
         logState,
         loginState,

@@ -7,24 +7,45 @@
                     <table class="table lime-green-strip table-striped">
                         <thead>
                         <tr>
-                            <th>Event</th>
+                            <th>
+                                Event
+                                <a
+                                    role="button"
+                                    class="fa fa-sort d-link"
+                                    href="javascript:void(0);"
+                                    (click)="changePaginationSortEvent()"
+                                        >
+                                </a>
+                            </th>
                             <th>ID</th>
-                            <th>Status</th>
+                            <th>
+                                Status
+                                <a
+                                    role="button"
+                                    class="fa fa-sort d-link"
+                                    href="javascript:void(0);"
+                                    (click)="changePaginationSortStatus()"
+                                        >
+                                </a>
+                            </th>
                             <th>Link</th>
                         </tr>
                         </thead>
                         <tbody *ngIf="listCRF" class="grey-table">
-                        <tr *ngFor="let crf of listCRF.items">
+                        <tr *ngFor="let crf of listCRF">
                             <td>{{ crf.name.ENGLISH }}</td>
                             <td>{{ crf.id }}</td>
                             <td>{{ crf.status }}</td>
                             <td>
-                                <a class="d-link table-link" href="javascript:void(0);">
+                                <a
+                                    role="button"
+                                    class="d-link table-link"
+                                    href="javascript:void(0);"
+                                        >
                                     <i class="fa fa-external-link"></i>
                                     Open
                                 </a>
                             </td>
-                            <td><p>{{listCRF.rest.pagination.page}}</p></td>
                         </tr>
                         </tbody>
                     </table>
@@ -32,10 +53,11 @@
                 <div class="card-footer bg-secondary">
                     <div class="d-flex justify-content-between" *ngIf="listCRF">
                         <ngb-pagination
-                            (pageChange)="changePaginationOptions($event)"
-                            [maxSize]="3"
-                            [collectionSize]="listCRF.rest.pagination.total"
-                            [(page)]="page"
+                            (pageChange)="changePaginationPage($event)"
+                            [maxSize]="maxPagesCount"
+                            [collectionSize]="pagination.total"
+                            [pageSize]="pagination.size"
+                            [(page)]="crf.page"
                             aria-label="Default pagination"
                                 >
                         </ngb-pagination>
@@ -43,8 +65,8 @@
                             <a
                                 role="button"
                                 class="d-link"
-                                href="javascript:void(0);"
                                 ngbDropdownToggle
+                                href="javascript:void(0);"
                                     >
                                 <i class="fa fa-file-text"></i> Size
                             </a>
@@ -55,6 +77,17 @@
                                             role="button"
                                             class="d-link"
                                             href="javascript:void(0);"
+                                            (click)="changePaginationSize(size[0])"
+                                                >
+                                            <i class="fa fa-file-text"></i> Size 2
+                                        </a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <a
+                                            role="button"
+                                            class="d-link"
+                                            href="javascript:void(0);"
+                                            (click)="changePaginationSize(size[1])"
                                                 >
                                             <i class="fa fa-file-text"></i> Size 5
                                         </a>
@@ -63,18 +96,10 @@
                                         <a
                                             role="button"
                                             class="d-link"
-                                            href="javascript:void(0);"
+                                            href="javascript:void(0)"
+                                            (click)="changePaginationSize(size[2])"
                                                 >
                                             <i class="fa fa-file-text"></i> Size 10
-                                        </a>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <a
-                                            role="button"
-                                            class="d-link"
-                                            href="javascript:void(0);"
-                                                >
-                                            <i class="fa fa-file-text"></i> Size 20
                                         </a>
                                     </li>
                                 </ul>
