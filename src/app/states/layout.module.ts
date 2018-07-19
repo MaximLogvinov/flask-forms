@@ -55,7 +55,7 @@ export const routing: RootModule = {
     // useHash: false, // html5mode - without #
     useHash: true, // with #
     otherwise: errorState.url,
-    initial: logState.url,
+    initial: viewerState.url,
     states: [
         logState,
         loginState,

@@ -6,10 +6,22 @@
     <div class="d-none d-sm-block">
         <ul class="nav">
             <li class="nav-item ">
-                <a class="nav-link d-link" href="javascript:void(0);">View current CRF</a>
+                <a
+                    uiSref="viewer"
+                    class="nav-link d-link"
+                    [uiParams]="{ token: this.crf.token}"
+                        >
+                    View current CRF
+                </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link d-link" uiSref="log">Log</a>
+                <a
+                    uiSref="log"
+                    class="nav-link d-link"
+                    [uiParams]="{ token: this.crf.token}"
+                        >
+                    Log
+                </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link d-link" href="javascript:void(0);">Languages</a>
@@ -54,16 +66,28 @@
             >
         <ul class="navbar-nav text-center item-black-divider">
             <li class="nav-item ">
-                <a class="nav-link d-link" href="#">View current CRF</a>
+                <a
+                    uiSref="viewer"
+                    class="nav-link d-link"
+                    [uiParams]="{ token: this.crf.token}"
+                        >
+                    View current CRF
+                </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link d-link" uiSref="log">Log</a>
+                <a
+                    uiSref="log"
+                    class="nav-link d-link"
+                    [uiParams]="{ token: this.crf.token}"
+                        >
+                    Log
+                </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link d-link" href="#">Languages</a>
+                <a class="nav-link d-link" href="javascript:void(0);">Languages</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link d-link" href="#">Log out</a>
+                <a class="nav-link d-link" href="javascript:void(0);">Log out</a>
             </li>
         </ul>
     </div>

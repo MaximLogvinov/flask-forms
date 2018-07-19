@@ -8,6 +8,8 @@ import { CRFItem } from '../models/crf-items.model';
 @Injectable()
 export class CRFService {
     constructor( private http: HttpClient ) {}
+    // current CRF token
+    public token;
     // request parameters
     public page;
     public size;
@@ -37,7 +39,7 @@ export class CRFService {
         let pagination = {};
         return this.http
             .post(
-                'http://192.168.0.19:5604/flask/viewer/XLJV7EmzwmZM/log',
+                'http://192.168.0.19:5604/flask/viewer/' + this.token + '/log',
                 credentials )
             .map( data => {
                 for ( let i = 0; data['items'].length > i; i++ ) {

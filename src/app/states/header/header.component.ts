@@ -1,5 +1,7 @@
 // outsource
 import { Component } from '@angular/core';
+// services
+import { CRFService } from '../../services/CRF.service';
 import { StateService } from '@uirouter/angular';
 
 @Component({
@@ -8,4 +10,5 @@ import { StateService } from '@uirouter/angular';
 })
 export class HeaderComponent {
     isNavbarCollapsed: false;
+    constructor(public crf: CRFService ){}
 }

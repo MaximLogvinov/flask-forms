@@ -12,18 +12,18 @@ import { Transition } from '@uirouter/angular';
 export const logState = {
     parent: 'layout',
     name: 'log',
-    url: '/log?sortField&sortDirection&page&size',
+    url: '/log/{token}?sortField&sortDirection&page&size',
     views: {
         header: { component: HeaderComponent },
         $default: { component: LogPage },
         footer: { component: FooterComponent }
     },
     params: {
+        token: 'XLJV7EmzwmZM',
         page: '1',
         size: '5',
         sortField: 'status',
         sortDirection: 'asc'
-        // sortEvent: 'name,asc'
     },
     resolve: [
         {
@@ -35,6 +35,7 @@ export const logState = {
                 crf.size = trans.params().size;
                 crf.sortField = trans.params().sortField;
                 crf.sortDirection = trans.params().sortDirection;
+                crf.token = trans.params().token;
             }
         }
     ]

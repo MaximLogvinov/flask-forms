@@ -77,6 +77,8 @@ export class LogPage implements OnInit {
             this.pagination = response[0];
             // set list of CRFs items
             this.listCRF = response[1];
+
+            console.log(this.listCRF);
         });
     }
 }
