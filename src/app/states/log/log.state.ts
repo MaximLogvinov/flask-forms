@@ -19,7 +19,7 @@ export const logState = {
         footer: { component: FooterComponent }
     },
     params: {
-        token: 'XLJV7EmzwmZM',
+        token: '', // token field is empty because we setting initial token value in viewer state
         page: '1',
         size: '5',
         sortField: 'status',
@@ -35,7 +35,9 @@ export const logState = {
                 crf.size = trans.params().size;
                 crf.sortField = trans.params().sortField;
                 crf.sortDirection = trans.params().sortDirection;
+                // setting token value which we get from viewer
                 crf.token = trans.params().token;
+                console.log(crf.token);
             }
         }
     ]

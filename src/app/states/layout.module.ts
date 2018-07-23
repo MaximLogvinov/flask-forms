@@ -39,7 +39,6 @@ import { rootLayoutState } from './root-layout.state';
  *
  *
  */
-
 export const layoutState = {
     // parent: 'root-layout',
     name: 'layout',

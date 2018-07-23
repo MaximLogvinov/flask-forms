@@ -21,7 +21,7 @@ export const viewerState = {
         footer: { component: FooterComponent }
     },
     params: {
-        token: 'XLJV7EmzwmZM'
+        token: '6BHhTZ1sWeQj' // default value
     },
     resolve: [
         {
@@ -30,7 +30,7 @@ export const viewerState = {
             resolveFn: ( crf, trans ) => {
                 // setting initial ( current ) CRF token
                 crf.token = trans.params().token;
-                console.log(crf.token);
+                console.log(trans.params().token);
             }
         }
     ]

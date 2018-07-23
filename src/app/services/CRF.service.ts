@@ -2,15 +2,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-// model
+// models
 import { CRFItem } from '../models/crf-items.model';
+import { CRFItemSubject } from '../models/crf-item-subject.model';
 
 @Injectable()
 export class CRFService {
     constructor( private http: HttpClient ) {}
     // current CRF token
     public token;
-    // request parameters
+    // request parameters for log method
     public page;
     public size;
     // sorting params in request
@@ -33,7 +34,7 @@ export class CRFService {
             // subtracting one because page numbering on server side starts from zero
             'page': pageNumber ? pageNumber - 1 : 0,
             'size': pageSize,
-            'sort': this.sortField + ',' + this.sortDirection, // 'status,asc'
+            'sort': this.sortField + ',' + this.sortDirection, //
         };
         const CRFlist = [];
         let pagination = {};
@@ -43,10 +44,26 @@ export class CRFService {
                 credentials )
             .map( data => {
                 for ( let i = 0; data['items'].length > i; i++ ) {
-                    CRFlist.push(new CRFItem(data['items'][i]));
+                    CRFlist.push(new CRFItem( data['items'][i] ));
                 }
                 pagination = data['rest']['pagination'];
                 return [ pagination, CRFlist ];
+            });
+    }
+    public getData() {
+        let totalCRFlistData = [];
+        const CRFsubjectList = [];
+        return this.http
+            .get( 'http://192.168.0.19:5604/flask/viewer/' + this.token + '/data' )
+            .map( data => {
+                // data verification
+                if ( data['CRFs'].length > 0 ) {
+                    for ( let i = 0; data['CRFs'][0]['sections'][0]['items'].length > i; i++ ) {
+                        CRFsubjectList.push( new CRFItemSubject( data['CRFs'][0]['sections'][0]['items'][i] ) );
+                    }
+                }
+                totalCRFlistData = data['CRFs'][0];
+                return [ totalCRFlistData, CRFsubjectList ];
             });
     }
 }

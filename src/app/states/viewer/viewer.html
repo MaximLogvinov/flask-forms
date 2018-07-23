@@ -1,8 +1,84 @@
 <div class="container">
     <div class="row">
         <div class="col-12">
-            <h3 class="h1 text-center">Branching Logic Test</h3>
-            <p class="h2 text-center">Branching Logic Test Desc</p>
+            <h3 class="h1 text-center">{{ nameCRF }}</h3>
+            <p class="h2 text-center">{{ descriptionCRF }}</p>
+        </div>
+        <div class="col-12">
+            <form name="formCRF" *ngIf="subjectCRFlist">
+                <fieldset>
+                    <legend class="text-center">{{ formListNameCRF }}</legend>
+                    <div class="card"  *ngFor="let item of subjectCRFlist">
+                        <div [ngSwitch]="item.type" class="card-body">
+                            <div *ngSwitchCase="'CHECKBOX'">
+                                <input
+                                id="item.id"
+                                [type]="item.type"
+                                [value]="item.value"
+                                [pattern]="item.pattern"
+                                [disabled]="item.disabled"
+                                [required]="item.required"
+                                    >
+                                <!--[placeholder]="item.placeholder.ENGLISH "-->
+                                <label [for]="item.id">
+                                {{ item.label.ENGLISH }}
+                                </label>
+                            </div>
+                            <div *ngSwitchCase="'TEXTAREA'">
+                                <label [for]="item.id" class="d-block">
+                                    {{ item.label.ENGLISH }}
+                                </label>
+                                <!--Using crfId instead name, because in server side response property name is absent-->
+                                <textarea
+                                    [id]="item.id"
+                                    [rows]="item.rows"
+                                    [name]="item.crfId"
+                                    [value]="item.value"
+                                    [disabled]="item.disabled"
+                                    [required]="item.required"
+                                    [maxLength]="item.maxLength"
+                                    [placeholder]="item.placeholder.ENGLISH"
+                                        >
+                                </textarea>
+                            </div>
+                            <div *ngSwitchCase="'RADIO'">
+                                <label [for]="item.id">{{ item.label.ENGLISH }}</label>
+                                <div [id]="item.id" *ngFor="let parameter of item.options">
+                                    <input
+                                        [id]="parameter.uid"
+                                        [type]="item.type"
+                                        [value]="parameter.value"
+                                        [pattern]="item.pattern"
+                                        [disabled]="item.disabled"
+                                        [required]="item.required"
+                                            >
+                                    <label [for]="parameter.uid">
+                                        {{ parameter.title.ENGLISH }}
+                                    </label>
+                                </div>
+                            </div>
+                            <div *ngSwitchCase="'MULTIPLE_SELECT'">
+                                <label [for]="item.id" class="d-block">
+                                    {{ item.label.ENGLISH }}
+                                </label>
+                                <select
+                                    [id]="item.id"
+                                    [name]="item.crfId"
+                                    [disabled]="item.disabled"
+                                    [required]="item.required"
+                                        >
+                                    <option
+                                        [value]="parameter.value"
+                                        *ngFor="let parameter of item.options"
+                                            >
+                                        {{parameter.title.ENGLISH}}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
         </div>
     </div>
 </div>
