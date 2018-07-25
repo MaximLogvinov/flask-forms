@@ -1,0 +1,16 @@
+<label [for]="multiselectData.id" class="d-block">
+    {{ multiselectData.label.ENGLISH }}
+</label>
+<ng-multiselect-dropdown
+    [id]="multiselectData.id"
+    [name]="multiselectData.crfId"
+    [(ngModel)]="multiselectDataModel"
+    [disabled]="multiselectData.disabled"
+    [required]="multiselectData.required"
+    [data]="multiselectOptionsARRAY"
+    (onSelect)="onItemSelect($event)"
+    (onSelectAll)="onSelectAll($event)"
+    (onDeSelect)="onItemDeSelect($event)"
+    [settings]="multiselectDefaultSettings "
+        >
+</ng-multiselect-dropdown>

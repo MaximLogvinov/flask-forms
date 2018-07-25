@@ -7,12 +7,17 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 // components
 import { FooterComponent } from './footer/footer.component';
 import { LayoutComponent } from './layout.component';
 import { HeaderComponent } from './header/header.component';
 import { RootLayoutComponent } from './root-layout.component';
+
+//
+import { TextareaComponent } from './viewer/form-components/textarea-component/viewer.textarea.component';
+import { RadioComponent } from './viewer/form-components/radio-component/viewer.radio.component';
+import { MultiselectComponent } from './viewer/form-components/multiselect-component/viewer.multiselect.component';
 
 // app states
 
@@ -81,7 +86,10 @@ export const routing: RootModule = {
         LogPage,
         LoginPage,
         ErrorPage,
-        ViewerPage
+        ViewerPage,
+        TextareaComponent,
+        RadioComponent,
+        MultiselectComponent
     ],
     // define dependencies for all page components
     imports: [
@@ -93,6 +101,7 @@ export const routing: RootModule = {
         ReactiveFormsModule,
         BrowserAnimationsModule,
         ToastrModule.forRoot(),
+        NgMultiSelectDropDownModule.forRoot()
     ],
     // define outgoing modules
     exports: [

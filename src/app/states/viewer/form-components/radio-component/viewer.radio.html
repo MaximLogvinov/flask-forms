@@ -1,0 +1,16 @@
+<label [for]="radioData.id">{{ radioData.label.ENGLISH }}</label>
+<div [id]="radioData.id" *ngFor="let parameter of radioData.options">
+    <input
+        [id]="parameter.uid"
+        [name]="radioData.crfId"
+        [type]="radioData.type"
+        [value]="parameter.value"
+        [pattern]="radioData.pattern"
+        [disabled]="radioData.disabled"
+        [required]="radioData.required"
+        (click)="onSelect(parameter.value)"
+            >
+    <label [for]="parameter.uid">
+        {{ parameter.title.ENGLISH }}
+    </label>
+</div>

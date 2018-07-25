@@ -19,6 +19,10 @@ export class ViewerPage implements OnInit {
     public nameCRF;
     public descriptionCRF;
     public formListNameCRF;
+    //
+    public testSelectSettings = {};
+    //
+    dropdownList = [];
     constructor ( public crf: CRFService ) {}
     ngOnInit () {
         this.crf.getData().subscribe(response => {
@@ -39,5 +43,9 @@ export class ViewerPage implements OnInit {
                 this.formListNameCRF =  '';
             }
         });
+    }
+    // test multi select data
+    onDebugg () {
+        console.log(this.subjectCRFlist)
     }
 }

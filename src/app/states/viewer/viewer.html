@@ -12,16 +12,16 @@
                         <div [ngSwitch]="item.type" class="card-body">
                             <div *ngSwitchCase="'CHECKBOX'">
                                 <input
-                                id="item.id"
-                                [type]="item.type"
-                                [value]="item.value"
-                                [pattern]="item.pattern"
-                                [disabled]="item.disabled"
-                                [required]="item.required"
-                                    >
+                                    [id]="item.id"
+                                    [type]="item.type"
+                                    [value]="item.value"
+                                    [pattern]="item.pattern"
+                                    [disabled]="item.disabled"
+                                    [required]="item.required"
+                                >
                                 <!--[placeholder]="item.placeholder.ENGLISH "-->
                                 <label [for]="item.id">
-                                {{ item.label.ENGLISH }}
+                                    {{ item.label.ENGLISH }}
                                 </label>
                             </div>
                             <div *ngSwitchCase="'TEXTAREA'">
@@ -38,42 +38,16 @@
                                     [required]="item.required"
                                     [maxLength]="item.maxLength"
                                     [placeholder]="item.placeholder.ENGLISH"
-                                        >
+                                >
                                 </textarea>
+                                <viewer-textarea [textareaData]="item"></viewer-textarea>
                             </div>
                             <div *ngSwitchCase="'RADIO'">
-                                <label [for]="item.id">{{ item.label.ENGLISH }}</label>
-                                <div [id]="item.id" *ngFor="let parameter of item.options">
-                                    <input
-                                        [id]="parameter.uid"
-                                        [type]="item.type"
-                                        [value]="parameter.value"
-                                        [pattern]="item.pattern"
-                                        [disabled]="item.disabled"
-                                        [required]="item.required"
-                                            >
-                                    <label [for]="parameter.uid">
-                                        {{ parameter.title.ENGLISH }}
-                                    </label>
-                                </div>
+                                <viewer-radio [radioData]="item"></viewer-radio>
                             </div>
                             <div *ngSwitchCase="'MULTIPLE_SELECT'">
-                                <label [for]="item.id" class="d-block">
-                                    {{ item.label.ENGLISH }}
-                                </label>
-                                <select
-                                    [id]="item.id"
-                                    [name]="item.crfId"
-                                    [disabled]="item.disabled"
-                                    [required]="item.required"
-                                        >
-                                    <option
-                                        [value]="parameter.value"
-                                        *ngFor="let parameter of item.options"
-                                            >
-                                        {{parameter.title.ENGLISH}}
-                                    </option>
-                                </select>
+                                <viewer-multiselect [multiselectData]="item"></viewer-multiselect>
+                                <button type="button" (click)="onDebugg()"> debug</button>
                             </div>
                         </div>
                     </div>
