@@ -32,10 +32,8 @@ export class MultiselectComponent implements OnInit {
             singleSelection: false,
             idField: 'id',
             textField: 'title',
-            selectAllText: 'Select All',
-            unSelectAllText: 'UnSelect All',
-            itemsShowLimit: 3,
-            allowSearchFilter: true
+            itemsShowLimit: this.multiselectData.options.length,
+            limitSelection: this.multiselectData.options.length,
         };
     }
     // method to add selected value to CRF subject item
