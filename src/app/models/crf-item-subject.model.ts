@@ -22,6 +22,7 @@ export class CRFItemSubject {
     pattern: any;
     placeholder: object;
     help: object;
+    // options
     options: any;
     id: string;
     value: any;
@@ -42,7 +43,9 @@ export class CRFItemSubject {
         this.order = data.order || 0;
         this.options = data.options || [];
         this.id = data.id || '';
-        this.value = data.value || [''];
+        // this.value = data.value || [];
+        // value parameter expected to be filled by the user and then sent to server
+        this.value = [];
         // from adds
         this.branchingLogic = data.branchingLogic || '';
         this.disabled = data.adds.disabled || false;

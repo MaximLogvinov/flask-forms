@@ -8,16 +8,16 @@ import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+
 // components
 import { FooterComponent } from './footer/footer.component';
 import { LayoutComponent } from './layout.component';
 import { HeaderComponent } from './header/header.component';
 import { RootLayoutComponent } from './root-layout.component';
-
-//
-import { TextareaComponent } from './viewer/form-components/textarea-component/viewer.textarea.component';
-import { RadioComponent } from './viewer/form-components/radio-component/viewer.radio.component';
+// viewer components
 import { MultiselectComponent } from './viewer/form-components/multiselect-component/viewer.multiselect.component';
+import { RadioComponent } from './viewer/form-components/radio-component/viewer.radio.component';
+import { TextareaComponent } from './viewer/form-components/textarea-component/viewer.textarea.component';
 
 // app states
 
@@ -79,17 +79,21 @@ export const routing: RootModule = {
 @NgModule({
     // define list of all page components
     declarations: [
+        // layouts
         LayoutComponent,
+        RootLayoutComponent,
+        // components
         HeaderComponent,
         FooterComponent,
-        RootLayoutComponent,
+        // viewer components
+        MultiselectComponent,
+        RadioComponent,
+        TextareaComponent,
+        // pages
         LogPage,
         LoginPage,
         ErrorPage,
-        ViewerPage,
-        TextareaComponent,
-        RadioComponent,
-        MultiselectComponent
+        ViewerPage
     ],
     // define dependencies for all page components
     imports: [
