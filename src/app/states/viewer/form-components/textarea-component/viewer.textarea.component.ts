@@ -5,13 +5,14 @@ import {Component, Input, OnInit} from '@angular/core';
     selector: 'viewer-textarea',
     templateUrl: './viewer.textarea.html',
 })
-export class TextareaComponent implements OnInit{
+export class TextareaComponent implements OnInit {
     @Input() textareaData;
-    
+    public textareaLabel;
     ngOnInit () {
-        console.log(this.textareaData);
+        this.textareaLabel = this.textareaData.label.ENGLISH;
     }
-    // saveText ( item: any ) {
-    //     this.values += event.target.value + ' | ';
-    // }
+    getTextareaValue( text: string ) {
+        // using [] as wrapper because of server requirements to response
+        this.textareaData.value = [ text ];
+    }
 }

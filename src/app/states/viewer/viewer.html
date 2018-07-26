@@ -8,24 +8,15 @@
             <form name="formCRF" *ngIf="subjectCRFlist">
                 <fieldset>
                     <legend class="text-center">{{ formListNameCRF }}</legend>
-                    <div class="card"  *ngFor="let item of subjectCRFlist; trackBy: personIdentity">
-                        {{ item.order }}
+                    <div class="card"  *ngFor="let item of subjectCRFlist">
                         <div [ngSwitch]="item.type" class="card-body">
-                            <div *ngSwitchCase="'CHECKBOX'">
-                                <viewer-checkbox [checkboxData]="item"></viewer-checkbox>
-                            </div>
-                            <div *ngSwitchCase="'TEXTAREA'">
-                                <viewer-textarea [textareaData]="item"></viewer-textarea>
-                            </div>
-                            <div *ngSwitchCase="'RADIO'">
-                                <viewer-radio [radioData]="item"></viewer-radio>
-                            </div>
-                            <div *ngSwitchCase="'MULTIPLE_SELECT'">
-                                <viewer-multiselect [multiselectData]="item"></viewer-multiselect>
-                                <button type="button" (click)="onDebugg()"> debug</button>
-                            </div>
+                            <viewer-checkbox *ngSwitchCase="'CHECKBOX'" [checkboxData]="item"></viewer-checkbox>
+                            <viewer-textarea *ngSwitchCase="'TEXTAREA'" [textareaData]="item"></viewer-textarea>
+                            <viewer-radio *ngSwitchCase="'RADIO'" [radioData]="item"></viewer-radio>
+                            <viewer-multiselect *ngSwitchCase="'MULTIPLE_SELECT'" [multiselectData]="item"></viewer-multiselect>
                         </div>
                     </div>
+                    <button type="button" (click)="onDebugg()"> debug</button>
                 </fieldset>
             </form>
         </div>

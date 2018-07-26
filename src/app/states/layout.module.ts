@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { OrderModule } from 'ngx-order-pipe';
 
 // components
 import { FooterComponent } from './footer/footer.component';
@@ -107,7 +108,8 @@ export const routing: RootModule = {
         ReactiveFormsModule,
         BrowserAnimationsModule,
         ToastrModule.forRoot(),
-        NgMultiSelectDropDownModule.forRoot()
+        NgMultiSelectDropDownModule.forRoot(),
+        OrderModule
     ],
     // define outgoing modules
     exports: [

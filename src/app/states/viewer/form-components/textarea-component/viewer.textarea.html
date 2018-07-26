@@ -1,7 +1,8 @@
 <label [for]="textareaData.id" class="d-block">
-    {{ textareaData.label.ENGLISH }}
+    {{ textareaLabel }}
 </label>
 <textarea
+    #textarea
     [id]="textareaData.id"
     [rows]="textareaData.rows"
     [name]="textareaData.crfId"
@@ -10,8 +11,6 @@
     [required]="textareaData.required"
     [maxLength]="textareaData.maxLength"
     [placeholder]="textareaData.placeholder.ENGLISH"
-    (keyup)="0"
-    #text
+    (change)="getTextareaValue(textarea.value)"
         >
 </textarea>
-<p>{{text.value}}</p>
