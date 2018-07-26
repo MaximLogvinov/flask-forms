@@ -18,6 +18,7 @@ import { RootLayoutComponent } from './root-layout.component';
 import { MultiselectComponent } from './viewer/form-components/multiselect-component/viewer.multiselect.component';
 import { RadioComponent } from './viewer/form-components/radio-component/viewer.radio.component';
 import { TextareaComponent } from './viewer/form-components/textarea-component/viewer.textarea.component';
+import { CheckboxComponent } from './viewer/form-components/checkbox-component/viewer.checkbox.component';
 
 // app states
 
@@ -89,6 +90,7 @@ export const routing: RootModule = {
         MultiselectComponent,
         RadioComponent,
         TextareaComponent,
+        CheckboxComponent,
         // pages
         LogPage,
         LoginPage,

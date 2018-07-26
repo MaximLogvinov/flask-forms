@@ -8,38 +8,13 @@
             <form name="formCRF" *ngIf="subjectCRFlist">
                 <fieldset>
                     <legend class="text-center">{{ formListNameCRF }}</legend>
-                    <div class="card"  *ngFor="let item of subjectCRFlist">
+                    <div class="card"  *ngFor="let item of subjectCRFlist; trackBy: personIdentity">
+                        {{ item.order }}
                         <div [ngSwitch]="item.type" class="card-body">
                             <div *ngSwitchCase="'CHECKBOX'">
-                                <input
-                                    [id]="item.id"
-                                    [type]="item.type"
-                                    [value]="item.value"
-                                    [pattern]="item.pattern"
-                                    [disabled]="item.disabled"
-                                    [required]="item.required"
-                                >
-                                <!--[placeholder]="item.placeholder.ENGLISH "-->
-                                <label [for]="item.id">
-                                    {{ item.label.ENGLISH }}
-                                </label>
+                                <viewer-checkbox [checkboxData]="item"></viewer-checkbox>
                             </div>
                             <div *ngSwitchCase="'TEXTAREA'">
-                                <label [for]="item.id" class="d-block">
-                                    {{ item.label.ENGLISH }}
-                                </label>
-                                <!--Using crfId instead name, because in server side response property name is absent-->
-                                <textarea
-                                    [id]="item.id"
-                                    [rows]="item.rows"
-                                    [name]="item.crfId"
-                                    [value]="item.value"
-                                    [disabled]="item.disabled"
-                                    [required]="item.required"
-                                    [maxLength]="item.maxLength"
-                                    [placeholder]="item.placeholder.ENGLISH"
-                                >
-                                </textarea>
                                 <viewer-textarea [textareaData]="item"></viewer-textarea>
                             </div>
                             <div *ngSwitchCase="'RADIO'">

@@ -2,6 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 // services
 import { CRFService } from '../../services/CRF.service';
+import {CRFItemSubject} from '../../models/crf-item-subject.model';
 
 /**
  * Root application component
@@ -20,7 +21,7 @@ export class ViewerPage implements OnInit {
     public descriptionCRF;
     public formListNameCRF;
     //
-    public testSelectSettings = {};
+    public itemsOrder = [];
     //
     dropdownList = [];
     constructor ( public crf: CRFService ) {}
@@ -47,5 +48,9 @@ export class ViewerPage implements OnInit {
     // test multi select data
     onDebugg () {
         console.log(this.subjectCRFlist)
+    }
+    personIdentity( index : number, item: CRFItemSubject ) {
+        console.log( "TrackBy:", item.order, "at index", index );
+        return item.order;
     }
 }

@@ -1,2 +1,17 @@
-<p>textarea hello!</p>
-<textarea autosize>Hello, this is an example of Autosize in Angular2.</textarea>
+<label [for]="textareaData.id" class="d-block">
+    {{ textareaData.label.ENGLISH }}
+</label>
+<textarea
+    [id]="textareaData.id"
+    [rows]="textareaData.rows"
+    [name]="textareaData.crfId"
+    [value]="textareaData.value"
+    [disabled]="textareaData.disabled"
+    [required]="textareaData.required"
+    [maxLength]="textareaData.maxLength"
+    [placeholder]="textareaData.placeholder.ENGLISH"
+    (keyup)="0"
+    #text
+        >
+</textarea>
+<p>{{text.value}}</p>

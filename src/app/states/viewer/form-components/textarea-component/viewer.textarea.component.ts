@@ -7,7 +7,11 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class TextareaComponent implements OnInit{
     @Input() textareaData;
+    
     ngOnInit () {
         console.log(this.textareaData);
     }
+    // saveText ( item: any ) {
+    //     this.values += event.target.value + ' | ';
+    // }
 }
