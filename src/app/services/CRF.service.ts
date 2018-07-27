@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 // models
+import { CRF } from '../models/crf-item.model';
 import { CRFItem } from '../models/crf-items.model';
 import { CRFItemSubject } from '../models/crf-item-subject.model';
 
@@ -53,6 +54,7 @@ export class CRFService {
     public getData() {
         let totalCRFlistData = [];
         const CRFsubjectList = [];
+        const CRFs = [];
         return this.http
             .get( 'http://192.168.0.19:5604/flask/viewer/' + this.token + '/data' )
             .map( data => {
@@ -62,8 +64,22 @@ export class CRFService {
                         CRFsubjectList.push( new CRFItemSubject( data['CRFs'][0]['sections'][0]['items'][i] ) );
                     }
                 }
+                for ( let i = 0; data['CRFs'].length > i; i++ ) {
+                    CRFs.push( new CRF( data['CRFs'][i] ));
+                }
+                console.log(CRFs);
+                console.log( data['CRFs'] );
                 totalCRFlistData = data['CRFs'][0];
-                return [ totalCRFlistData, CRFsubjectList ];
+                return  CRFs;
+            });
+    }
+    public saveCRF ( crf ) {
+        console.log(crf, 'ssaveCRF');
+        return this.http
+            .post( 'http://192.168.0.19:5604/flask/viewer/' + this.token + '/save-crf', crf )
+            .map( data => {
+                console.log(data, 'success');
+                return data;
             });
     }
 }

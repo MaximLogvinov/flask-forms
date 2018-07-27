@@ -6,7 +6,9 @@ import { CRFService } from '../../services/CRF.service';
 import { OrderPipe } from 'ngx-order-pipe';
 // test
 // model
-import { CRFresponseItem } from '../../models/crf-response-item.model';
+import { CRFResponse} from '../../models/crf-response-item.model';
+import { CRFsectionItemResponse } from '../../models/crf-section-response.model';
+import { CRFItemSubjectResponse } from '../../models/crf-subject-response.model';
 
 /**
  * Root application component
@@ -18,41 +20,41 @@ import { CRFresponseItem } from '../../models/crf-response-item.model';
     templateUrl: './viewer.html',
 })
 export class ViewerPage implements OnInit {
+    public debugList = [];
+
+    public totalCRFData;
     public subjectCRFlist;
-    public untreatedResponse;
     // data holders for needed properties of untreated response
     public nameCRF;
     public descriptionCRF;
     public formListNameCRF;
-    //test
-    public test: CRFresponseItem;
     constructor ( public crf: CRFService, private orderPipe: OrderPipe ) {}
     ngOnInit () {
         this.crf.getData().subscribe(response => {
+            this.totalCRFData = response;
+            console.log(this.totalCRFData, 'viewer crf');
             // Untreated data. Used to get name and description property which is not part of CRFs subject model
-            this.untreatedResponse = response[0];
-            this.subjectCRFlist = response[1];
+            this.subjectCRFlist = this.totalCRFData[0].sections[0].items;
             // sorting subject CRF list collection by order property
             this.subjectCRFlist = this.orderPipe.transform(this.subjectCRFlist, 'order');
-            console.log(this.untreatedResponse);
-            console.log(this.subjectCRFlist);
-            // preparing needed properties from server response which is not a part of CRFs subject model
-            if ( this.untreatedResponse ) {
-                this.nameCRF = this.untreatedResponse.name.ENGLISH || 'Problems with server response.';
-                this.descriptionCRF = this.untreatedResponse.description.ENGLISH || 'Problems with server response.';
-                this.formListNameCRF = this.untreatedResponse.sections[0].name.ENGLISH || 'Problems with server response.';
-                console.log(this.subjectCRFlist[0].maxLength );
+            // preparing needed properties for view
+            if ( this.totalCRFData[0] ) {
+                this.nameCRF = this.totalCRFData[0].name.ENGLISH;
+                this.descriptionCRF = this.totalCRFData[0].description.ENGLISH;
+                this.formListNameCRF = this.totalCRFData[0].sections[0].name.ENGLISH;
             } else {
                 this.nameCRF = 'Empty CRF';
                 this.descriptionCRF = '';
-                this.formListNameCRF =  '';
+                this.formListNameCRF = '';
             }
         });
     }
     // test data
     onDebugg () {
-        console.log(this.subjectCRFlist);
-        console.log(new CRFresponseItem(this.untreatedResponse));
-        console.log(new CRFresponseItem(this.subjectCRFlist));
+        this.totalCRFData[0].sections[0].items = this.subjectCRFlist;
+        console.log(this.totalCRFData);
+        this.debugList.push( new CRFResponse( this.totalCRFData[0] ));
+        console.log( this.debugList , 'response');
+        this.crf.saveCRF(this.debugList[0]);
     }
 }
