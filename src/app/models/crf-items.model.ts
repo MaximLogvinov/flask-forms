@@ -1,6 +1,6 @@
 /**
  * CRF item ( as item of CRF list ) model
- * preparing data before view
+ * preparing data for view
  */
 export class CRFItem {
     name: object;

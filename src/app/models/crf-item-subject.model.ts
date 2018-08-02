@@ -1,6 +1,6 @@
 /**
  * Model of CRF item subject
- * preparing data before view
+ * preparing data for view
  */
 export class CRFItemSubject {
     type: string;
@@ -43,7 +43,6 @@ export class CRFItemSubject {
         this.order = data.order || 0;
         this.options = data.options || [];
         this.id = data.id || '';
-        // this.value = data.value || [];
         // value parameter expected to be filled by the user and then sent to server
         this.value = [];
         // from adds

@@ -1,7 +1,8 @@
 import { CRFsectionItemResponse } from './crf-section-response.model';
 
 /**
- * Preparing CRF before sent to server
+ * Preparing CRF response
+ * before sent to server
  */
 export class CRFResponse {
     completed: boolean;
@@ -14,6 +15,7 @@ export class CRFResponse {
     study_id: number;
     sections: any;
     constructor ( data ) {
+        // "completed" value is required in response to server side
         // need this field by default equal to 'false', because if value equal 'true' this CRF after request would be unavailable
         this.completed = false;
         this.data_created = data.data_created || '2018-06-24T11:20:00.000Z'; // remove after test

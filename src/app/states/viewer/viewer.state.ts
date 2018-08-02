@@ -1,4 +1,3 @@
-
 import { ViewerPage } from './viewer.page';
 // components
 import { HeaderComponent } from '../header/header.component';
@@ -30,7 +29,6 @@ export const viewerState = {
             resolveFn: ( crf, trans ) => {
                 // setting initial ( current ) CRF token
                 crf.token = trans.params().token;
-                console.log(trans.params().token);
             }
         }
     ]

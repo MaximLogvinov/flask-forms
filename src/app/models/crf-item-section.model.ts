@@ -1,8 +1,7 @@
 import { CRFItemSubject } from './crf-item-subject.model';
-
 /**
  * Preparing CRF section data
- * before sent to server
+ * for view
  */
 export class CRFsectionItem {
     name: object;

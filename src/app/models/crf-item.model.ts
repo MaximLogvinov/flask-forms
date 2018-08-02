@@ -1,8 +1,7 @@
 import { CRFsectionItem } from './crf-item-section.model';
-
 /**
  * Model of CRF item ( total )
- * preparing data before view
+ * preparing data for view
  */
 export class CRF {
     id: string;
