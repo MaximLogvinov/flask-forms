@@ -12,18 +12,18 @@ import { Transition } from '@uirouter/angular';
 export const logState = {
     parent: 'layout',
     name: 'log',
-    url: '/log?sortField&sortDirection&page&size',
+    url: '/log/{token}?sortField&sortDirection&page&size',
     views: {
         header: { component: HeaderComponent },
         $default: { component: LogPage },
         footer: { component: FooterComponent }
     },
     params: {
+        token: '', // token field is empty because we setting initial token value in viewer state
         page: '1',
         size: '5',
         sortField: 'status',
         sortDirection: 'asc'
-        // sortEvent: 'name,asc'
     },
     resolve: [
         {
@@ -35,6 +35,9 @@ export const logState = {
                 crf.size = trans.params().size;
                 crf.sortField = trans.params().sortField;
                 crf.sortDirection = trans.params().sortDirection;
+                // setting token value which we get from viewer
+                crf.token = trans.params().token;
+                console.log(crf.token);
             }
         }
     ]

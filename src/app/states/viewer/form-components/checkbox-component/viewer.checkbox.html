@@ -1,0 +1,12 @@
+<input
+    #checkbox
+    [id]="checkboxData.id"
+    [type]="checkboxData.type"
+    [pattern]="checkboxData.pattern"
+    [disabled]="checkboxData.disabled"
+    [required]="checkboxData.required"
+    (change)="getCheckboxValue( checkbox.checked )"
+        >
+<label [for]="checkboxData.id">
+    {{ checkboxLabel }}
+</label>

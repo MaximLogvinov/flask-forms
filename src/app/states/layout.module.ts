@@ -7,12 +7,19 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { OrderModule } from 'ngx-order-pipe';
 
 // components
 import { FooterComponent } from './footer/footer.component';
 import { LayoutComponent } from './layout.component';
 import { HeaderComponent } from './header/header.component';
 import { RootLayoutComponent } from './root-layout.component';
+// viewer components
+import { MultiselectComponent } from './viewer/form-components/multiselect-component/viewer.multiselect.component';
+import { RadioComponent } from './viewer/form-components/radio-component/viewer.radio.component';
+import { TextareaComponent } from './viewer/form-components/textarea-component/viewer.textarea.component';
+import { CheckboxComponent } from './viewer/form-components/checkbox-component/viewer.checkbox.component';
 
 // app states
 
@@ -39,7 +46,6 @@ import { rootLayoutState } from './root-layout.state';
  *
  *
  */
-
 export const layoutState = {
     // parent: 'root-layout',
     name: 'layout',
@@ -55,7 +61,7 @@ export const routing: RootModule = {
     // useHash: false, // html5mode - without #
     useHash: true, // with #
     otherwise: errorState.url,
-    initial: logState.url,
+    initial: viewerState.url,
     states: [
         logState,
         loginState,
@@ -75,10 +81,18 @@ export const routing: RootModule = {
 @NgModule({
     // define list of all page components
     declarations: [
+        // layouts
         LayoutComponent,
+        RootLayoutComponent,
+        // components
         HeaderComponent,
         FooterComponent,
-        RootLayoutComponent,
+        // viewer components
+        MultiselectComponent,
+        RadioComponent,
+        TextareaComponent,
+        CheckboxComponent,
+        // pages
         LogPage,
         LoginPage,
         ErrorPage,
@@ -94,6 +108,8 @@ export const routing: RootModule = {
         ReactiveFormsModule,
         BrowserAnimationsModule,
         ToastrModule.forRoot(),
+        NgMultiSelectDropDownModule.forRoot(),
+        OrderModule
     ],
     // define outgoing modules
     exports: [

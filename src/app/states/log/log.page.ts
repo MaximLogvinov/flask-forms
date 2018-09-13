@@ -22,7 +22,6 @@ export class LogPage implements OnInit {
     public maxPagesCount = 3;
     // initial pagination page value
     public size = [ 2, 5, 10 ];
-    public sort: string;
     // CRF items holder
     public listCRF;
     // will input pagination data in this variable after first request
@@ -77,6 +76,7 @@ export class LogPage implements OnInit {
             this.pagination = response[0];
             // set list of CRFs items
             this.listCRF = response[1];
+            console.log(this.listCRF);
         });
     }
 }

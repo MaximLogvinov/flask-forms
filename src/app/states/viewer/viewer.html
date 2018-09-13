@@ -1,8 +1,48 @@
 <div class="container">
     <div class="row">
         <div class="col-12">
-            <h3 class="h1 text-center">Branching Logic Test</h3>
-            <p class="h2 text-center">Branching Logic Test Desc</p>
+            <h3 class="h1 text-center">{{ nameCRF }}</h3>
+            <p class="h2 text-center">{{ descriptionCRF }}</p>
+        </div>
+        <div class="col-12">
+            <ng-container *ngIf="subjectCRFlist">
+                <form name="formCRF" *ngFor="let currentCRFList of subjectCRFlist">
+                    <fieldset>
+                        <legend class="text-center">{{ formListNameCRF }}</legend>
+                        <div class="card" *ngFor="let item of currentCRFList">
+                            <div [ngSwitch]="item.type" class="card-body">
+                                <viewer-checkbox
+                                    *ngSwitchCase="'CHECKBOX'"
+                                    [checkboxData]="item"
+                                        >
+                                </viewer-checkbox>
+                                <viewer-textarea
+                                    *ngSwitchCase="'TEXTAREA'"
+                                    [textareaData]="item"
+                                        >
+                                </viewer-textarea>
+                                <viewer-radio
+                                    *ngSwitchCase="'RADIO'"
+                                    [radioData]="item"
+                                        >
+                                </viewer-radio>
+                                <viewer-multiselect
+                                    *ngSwitchCase="'MULTIPLE_SELECT'"
+                                    [multiselectData]="item"
+                                        >
+                                </viewer-multiselect>
+                            </div>
+                        </div>
+                        <button
+                            type="submit"
+                            (click)="sentDataCRF()"
+                            class="btn btn-success"
+                                >
+                            FINISH
+                        </button>
+                    </fieldset>
+                </form>
+            </ng-container>
         </div>
     </div>
 </div>
